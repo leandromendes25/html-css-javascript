@@ -44,6 +44,7 @@
           <p>R$ 3.000,00</p>
         </div>
       </section>
+
       <section id="transation">
         <h2 class="sr-only">Transações</h2>
         <a href="#" class="button new">+ Nova Transação</a>
@@ -64,7 +65,7 @@
               <td class="description">Luz</td>
               <td class="expense">- R$ 500,00</td>
               <td class="date">23/01/2021</td>
-              <td><img src="./assets/minus.svg" alt="Rmover transação" /></td>
+              <td><img src="./assets/minus.svg" alt="Remover transação" /></td>
             </tr>
             <tr>
               <td class="description">Criação de Website</td>
@@ -82,6 +83,58 @@
         </table>
       </section>
     </main>
+    <!--Uma caixa transparente, dentro da caixa vai ter uma caixa branca onde poderemos colocar os valores  -->
+    <div class="modal-overlay active"><!--1:26:30-->
+      <div class="modal">
+        <div id="form">
+          <h2>Nova transação</h2>
+          <form action="">
+            <div class="input-group">
+              <label 
+              for="description" class="sr-only">Descrição</label>
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Descricão"
+              />
+            </div>
+            <div class="input-group">
+              <label
+               for="amount" class="sr-only">
+                Valor </label>
+                <input
+                  type="Number"
+                  id="amount"
+                  step="0.01"
+                  name="amount"
+                  placeholder="0,00"
+                  />
+                <small class="help"
+                  >Use o sinal - (negativo) para despesas e,(virgula) para casas
+                  decimais</small>
+              </div>
+
+            <div class="input-group">
+              <label
+               for="date" class="sr-only">Data</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+              />
+            </div>
+
+            <div class="input-group actions">
+              <a
+               href="" class="button cancel">Cancelar</a>
+              <button>Salvar</button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <footer>dev.finance$</footer>
   </body>

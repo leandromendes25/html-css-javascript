@@ -18,6 +18,7 @@ body {
   padding: 0;
   margin: -1px;
   overflow: hidden;
+
   clip: rect(0,0,0,0);
   white-space: nowrap;
   border-width: 0;
@@ -83,11 +84,17 @@ margin-top: 1rem;
 background: #49aa26;
 color: white;
 }
-#data-table {
+#transaction {
+  display: block;
+  overflow-x: auto;
   width: 100%;/*Pegando espaço inteiro table*/
+
+}
+#data-table {
+  width: 100%;
     border-spacing: 0 0.5rem; /*Tira espaçamento de cima/baixo*/
     color: #969cb3;
-
+   
 }
 table th {/*Header table*/
   background: white;
@@ -123,6 +130,36 @@ td.income {
 td.expense {
   color: #e92929;
 }
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; 
+  opacity: 0;
+  visibility: hidden;
+
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal {
+  background: #f0f2f5;
+  padding: 2.rem;
+  position: relative;
+  z-index: 1;
+}
+#form {
+  max-width: 500px;
+}
+#form h2 {
+  margin-top: 0;
+}
 footer {
   text-align: center;
   padding: 4rem 0 2rem;
@@ -136,6 +173,6 @@ footer {
   #balance {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
-   gap: 2rem;
+   gap: 2rem; 
  }
 }
