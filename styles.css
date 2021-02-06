@@ -160,6 +160,9 @@ td.expense {
 #form h2 {
   margin-top: 0;
 }
+input {
+  border: none
+}
 footer {
   text-align: center;
   padding: 4rem 0 2rem;
