@@ -161,7 +161,9 @@ td.expense {
   margin-top: 0;
 }
 input {
-  border: none
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.8rem;
 }
 footer {
   text-align: center;
