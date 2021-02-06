@@ -165,6 +165,9 @@ input {
   border-radius: 0.2rem;
   padding: 0.8rem;
 }
+.input-group {
+  margin-top: 0.8rem;
+}
 footer {
   text-align: center;
   padding: 4rem 0 2rem;
