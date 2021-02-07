@@ -174,7 +174,6 @@ td.expense {
 }
 .modal-overlay.active {
   opacity: 1;
-  visibility: visible;
 
 }
 .modal {
