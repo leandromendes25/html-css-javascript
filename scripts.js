@@ -30,14 +30,30 @@ const Modal = {
 ]
 
   const Transaction = {
+    all: transactions,//Agrupando os transactions.
     incomes() {
-    return "cheguei"
+    let income = 0;
+    transacitons.all.forEach(transaction => {
+      //Se for maior que..
+      if (transaction.amount > 0){
+        income += transaction.amount;
+      }
+    })
+    return income;
     },
     expenses() {
-      return "Aqui"
+      let expense = 0;
+      //Pegar todas as transações, para cada transação
+      transacitons.all.formatCurrencyach(transaction => {
+        if(transaction.amount < 0){
+          //somar a uma variavel e retornar uma variavel
+          expense += transaction.amount;
+        }
+      })
+      return expense; 
     },
     total() {
-      return "DISCOVER"
+      return Transaction.incomes() + Transaction.expenses;
     }
   }
   const DOM = {
@@ -58,16 +74,17 @@ const Modal = {
         <td><img src="./assets/minus.svg" alt="Remover transação" /></td>`
     return html
     },
+    //Responsável por deixar bonito na tela
     updateBalance() {
       document
       .getElementById('incomeDisplay')
-      .innerHTML = Transaction.incomes()
+      .innerHTML = Utils.formatCurrency(Transaction.incomes())
       document
       .getElementById('expenseDisplay')
-      .innerHTML = Transaction.expenses()
+      .innerHTML = Utils.formatCurrency(Transaction.expenses())
       document
       .getElementById('totalDisplay')
-      .innerHTML = Transaction.total()
+      .innerHTML = Utils.formatCurrency(Transaction.total())
     }
   }
   const Utils = {
