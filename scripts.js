@@ -31,12 +31,13 @@ const Modal = {
 
   const Transaction = {
     incomes() {
+    return "cheguei"
     },
     expenses() {
-
+      return "Aqui"
     },
     total() {
-
+      return "DISCOVER"
     }
   }
   const DOM = {
@@ -56,12 +57,23 @@ const Modal = {
         <td class="date">${transaction.date}</td>
         <td><img src="./assets/minus.svg" alt="Remover transação" /></td>`
     return html
+    },
+    updateBalance() {
+      document
+      .getElementById('incomeDisplay')
+      .innerHTML = Transaction.incomes()
+      document
+      .getElementById('expenseDisplay')
+      .innerHTML = Transaction.expenses()
+      document
+      .getElementById('totalDisplay')
+      .innerHTML = Transaction.total()
     }
   }
   const Utils = {
     formatCurrency(value) {
       const signal = Number(value) < 0 ? "-" : ""//forçando o valor que está vindo seja do tipo number
-      value = String(value).replace(/\D/g,"") //trocamos para String > Acesso a função
+      value = String(value).replace(/\D/g,"") //trocamos para String > Acesso a função. /\D/ ache tudo que não é número
       value = Number(value) /100 //coloca os . que precisamos nos números
       value = value.toLocaleString("pt-BR", { //converte a moeda
         style: "currency",
@@ -73,3 +85,6 @@ const Modal = {
   transacitons.forEach(function(transaction) {
     DOM.addTransaction(transaction)
   })
+  DOM.updateBalance() 
+
+  
