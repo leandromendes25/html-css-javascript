@@ -43,7 +43,7 @@
           </h3>
           <p id="totalDisplay">R$ 3.000,00</p>
         </div>
-      </section>
+      </section>  
 
       <section id="transation">
         <h2 class="sr-only">Transações</h2>
@@ -69,8 +69,8 @@
     <div class="modal-overlay active"><!--1:26:30 pt 2-->
       <div class="modal">
         <div id="form">
-          <h2>Nova transação</h2>
-          <form action="">
+          <h2>Nova transação</h2><!--Ao clicar-->
+          <form action="" onsubmit="Form.submit(event)">
             <div class="input-group">
               <label 
               for="description" class="sr-only">Descrição</label>
@@ -85,7 +85,7 @@
               <label
                for="amount" class="sr-only">
                 Valor </label>
-                <input
+                <input  
                   type="Number"
                   id="amount"
                   step="0.01"
