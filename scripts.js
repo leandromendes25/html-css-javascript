@@ -1,7 +1,8 @@
 const Modal = {
   open(){
+    //abrir modal
     document.querySelector('.modal-overlay')
-    .classList
+    .classList //add class active ao modal
     .add('active')
   },
   close(){
@@ -9,26 +10,34 @@ const Modal = {
     .classList.remove('active')
   }
 }
-
+const Storage = {
+  get() {
+    return JSON.parse(localStorage.getItem("dev.finances:transaction")) || [] //transforma de String para array. Q vem do set. Ou volte vazio
+  },
+  set(transactions) {
+    localStorage.setItem("dev.finances:transaction",JSON.stringify(transactions))//recebe 2 arg, key & value. Transform String em transactions
+  }
+}
 
 const Transaction = {
- all: [
-   {
-  description:'Luz',
-  amount: - 50000,
-  date:'23/01/2021'
-},
-{
-  description: 'Criação de website',
-  amount: 500000,
-  date: '23/01/2021'
-},
-{
-  description: 'internet',
-  amount: - 20000,
-  date: '23/01/2021'
-},
-],
+ all: Storage.get(),
+//  [
+//    {
+//   description:'Luz',
+//   amount: - 50000,
+//   date:'23/01/2021'  
+// },
+// {
+//   description: 'Criação de website',
+//   amount: 500000,
+//   date: '23/01/2021'
+// },
+// {
+//   description: 'internet',
+//   amount: - 20000,
+//   date: '23/01/2021'
+// },
+// ],
   add(transaction){
     Transaction.all.push(transaction)
     App.reload() //ao add vai dar um reload
@@ -173,16 +182,8 @@ const Form = {
     //modal feche, atuali app
   }
 }
-const storage = {
-  get() {
-    console.log(localStorage)
-  },
-  set(transactions) {
-    localStorage.setItem("dev.finances:transaction",JSON.stringify(transactions))//recebe 2 arg, key & value. Transform String em transactions
-  }
-}
-storage.set("hello")
-storage.get()
+
+
 const App = {
   init() {
     //Transaction.all.forEach((transaction, index) => {
@@ -190,6 +191,7 @@ const App = {
     //}) Por estar só recebendo os mesmos parametros que a função acima
     Transaction.all.forEach(DOM.addTransaction)//passa a ser um atalho
     DOM.updateBalance() 
+    Storage.set(Transaction.all)
   },
   reload() {
     DOM.clearTransaction()//pelo App ser exec 2x o clear impede que seja inserido novamente
