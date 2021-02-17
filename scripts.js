@@ -1,45 +1,50 @@
 const Modal = {
   open(){
-    //abrir modal
-    document.querySelector('.modal-overlay')
-    .classList //add class active ao modal
+    //Abrir modal
+    //Add class active ao modal
+    document
+    .querySelector('.modal-overlay')
+    .classList
     .add('active')
   },
-  close(){
-    document.querySelector('.modal-overlay')
-    .classList.remove('active')
-  }
-}
-const Storage = {
-  get() {
-    return JSON.parse(localStorage.getItem("dev.finances:transaction")) || [] //transforma de String para array. Q vem do set. Ou volte vazio
-  },
-  set(transactions) {
-    localStorage.setItem("dev.finances:transaction",JSON.stringify(transactions))//recebe 2 arg, key & value. Transform String em transactions
+  close(){  
+    document
+    .querySelector('.modal-overlay')
+    .classList
+    .remove('active')
   }
 }
 
+const Storage = {
+  get() {
+    return JSON.parse(localStorage.getItem("dev.finances:transaction")) || []//transforma o String que é a transação devolta pra array. Ou devolve vazio
+  },
+  set(transactions) {
+    localStorage.setItem("dev.finances:transaction",JSON.stringify(transactions))//recebe 2 arg, key & value. Transform String em transactions. 
+                                                                                //Os transactions são strings lá no storage
+  }
+}
 const Transaction = {
- all: Storage.get(),
+all: Storage.get(),
 //  [
-//    {
-//   description:'Luz',
-//   amount: - 50000,
-//   date:'23/01/2021'  
+//   {
+//  description:'Luz',
+//  amount: - 50000,
+//  date:'23/01/2021'
 // },
 // {
-//   description: 'Criação de website',
-//   amount: 500000,
-//   date: '23/01/2021'
+//  description: 'Criação de website',
+//  amount: 500000,
+//  date: '23/01/2021'
 // },
 // {
-//   description: 'internet',
-//   amount: - 20000,
-//   date: '23/01/2021'
+//  description: 'internet',
+//  amount: - 20000,
+//  date: '23/01/2021'
 // },
 // ],
-  add(transaction){
-    Transaction.all.push(transaction)
+add(transaction){
+  Transaction.all.push(transaction)
     App.reload() //ao add vai dar um reload
   },
   remove(index){
@@ -83,16 +88,22 @@ const DOM = {
 
 },
 /*HTML interno de uma transação */
-innerHTMLTransaction(transaction,index){
+innerHTMLTransaction(transaction, index) {
   const CSSclass = transaction.amount > 0 ? "income" : "expense"
+
   const amount = Utils.formatCurrency(transaction.amount)
-    const html = `
-      <td class="description">${transaction.description}</td>
-      <td class="${CSSclass}">${amount}</td>
-      <td class="date">${transaction.date}</td>
-      <td><img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação" /></td>`
+
+  const html = `
+  <td class="description">${transaction.description}</td>
+  <td class="${CSSclass}">${amount}</td>
+  <td class="date">${transaction.date}</td>
+  <td>
+      <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
+  </td>
+  `
+
   return html
-  },
+},
   //Responsável por deixar bonito na tela
   updateBalance() {
     document
@@ -111,8 +122,8 @@ innerHTMLTransaction(transaction,index){
 }
 const Utils = {
   formatAmount(value) {//se colocarem uma virgula/ponto vai tirar 
-    value = Number(value.replace(/\,\./g, "")) * 100
-    return value;
+    value =  value * 100;
+    return Math.round(value)//Arredonda
   },
   formatDate(date) {//Format ISO para o nosso
     const splittedDate = date.split("-") 
@@ -183,7 +194,6 @@ const Form = {
   }
 }
 
-
 const App = {
   init() {
     //Transaction.all.forEach((transaction, index) => {
@@ -191,7 +201,7 @@ const App = {
     //}) Por estar só recebendo os mesmos parametros que a função acima
     Transaction.all.forEach(DOM.addTransaction)//passa a ser um atalho
     DOM.updateBalance() 
-    Storage.set(Transaction.all)
+    Storage.set(Transaction.all)//Só atuali local storage > local guardado dados
   },
   reload() {
     DOM.clearTransaction()//pelo App ser exec 2x o clear impede que seja inserido novamente
