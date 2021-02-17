@@ -202,6 +202,7 @@ input {
 .input-group .help {
   opacity: 0.4;
 }
+
 .input-group.actions {
   display: flex;
   justify-content: space-between;
@@ -226,4 +227,3 @@ footer {
    grid-template-columns: repeat(3, 1fr);
    gap: 2rem; 
  }
-}
