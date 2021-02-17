@@ -230,6 +230,7 @@ footer {
   color: var(--dark-blue);
   opacity: 0.6;
 }
+/*Responsividade*/
 @media (min-width: 800px){
   html {
    font-size: 87.5%;
