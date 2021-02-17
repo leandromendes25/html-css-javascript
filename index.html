@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -24,8 +23,7 @@
             <span>Entradas</span>
             <img src="./assets/income.svg" alt="Imagem de entradas" />
           </h3>
-
-          <p>R$ 5.000</p>
+          <p id="incomeDisplay">R$ 0,00</p>
         </div>
 
         <div class="card">
@@ -33,8 +31,7 @@
             <span> Saídas </span>
             <img src="./assets/expense.svg" alt="Imagem de saida" />
           </h3>
-          <p>R$ 2.000</p>
-          <h3>R$ 3.000</h3>
+          <p id="expenseDisplay">R$ 0,00</p>
         </div>
 
         <div class="card total">
@@ -42,151 +39,9 @@
             <span> Total </span>
             <img src="./assets/total.svg" alt="" />
           </h3>
-          <p>R$ 3.000,00</p>
+          <p id="totalDisplay">R$ 0,00</p>
         </div>
-      </section>
-
-      <section id="transation">
-        <h2 class="sr-only">Transações</h2>
-        <a href="#" class="button new">+ Nova Transação</a>
-        <table id="data-table">
-          <thead>
-            <!--Table row-->
-            <tr>
-              <!--Conteudo da head-->
-              <th>Descrição</th>
-              <th>Valores</th>
-              <th>Data</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <!--Dados-->
-              <td class="description">Luz</td>
-              <td class="expense">- R$ 500,00</td>
-              <td class="date">23/01/2021</td>
-              <td><img src="./assets/minus.svg" alt="Remover transação" /></td>
-            </tr>
-            <tr>
-              <td class="description">Criação de Website</td>
-              <td class="income">R$ 5000,00</td>
-              <td class="date">23/01/2021</td>
-              <td><img src="./assets/minus.svg" alt="Rmover transação" /></td>
-            </tr>
-            <tr>
-              <td class="description">Internet</td>
-              <td class="expense">- R$ 200,00</td>
-              <td class="date">23/01/2021</td>
-              <td><img src="./assets/minus.svg" alt="Rmover transação" /></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </main>
-    <!--Uma caixa transparente, dentro da caixa vai ter uma caixa branca onde poderemos colocar os valores  -->
-    <div class="modal-overlay active"><!--1:26:30 pt 2-->
-      <div class="modal">
-        <div id="form">
-          <h2>Nova transação</h2>
-          <form action="">
-            <div class="input-group">
-              <label 
-              for="description" class="sr-only">Descrição</label>
-              <input
-                type="text"
-                id="description"
-                name="description"
-                placeholder="Descricão"
-              />
-            </div>
-            <div class="input-group">
-              <label
-               for="amount" class="sr-only">
-                Valor </label>
-                <input
-                  type="Number"
-                  id="amount"
-                  step="0.01"
-                  name="amount"
-                  placeholder="0,00"
-                  />
-                <small class="help"
-                  >Use o sinal - (negativo) para despesas e,(virgula) para casas
-                  decimais</small>
-              </div>
-
-            <div class="input-group">
-              <label
-               for="date" class="sr-only">Data</label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-              />
-            </div>
-
-            <div class="input-group actions">
-              <a
-               href="" class="button cancel">Cancelar</a>
-              <button>Salvar</button>
-            </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <footer>dev.finance$</footer>
-  </body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dev.finance$</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <img src="./assets/logo.svg" alt="Logo Dev Finance" />
-    </header>
-    <main class="container">
-      <section id="balance">
-        <h2 class="sr-only">Balanço</h2>
-        <div class="card">
-          <h3>
-            <span>Entradas</span>
-            <img src="./assets/income.svg" alt="Imagem de entradas" />
-          </h3>
-
-          <p>R$ 5.000</p>
-        </div>
-
-        <div class="card">
-          <h3>
-            <span> Saídas </span>
-            <img src="./assets/expense.svg" alt="Imagem de saida" />
-          </h3>
-          <p>R$ 2.000</p>
-          <h3>R$ 3.000</h3>
-        </div>
-
-        <div class="card total">
-          <h3>
-            <span> Total </span>
-            <img src="./assets/total.svg" alt="" />
-          </h3>
-          <p>R$ 3.000,00</p>
-        </div>
-      </section>
+      </section>  
 
       <section id="transation">
         <h2 class="sr-only">Transações</h2>
@@ -212,8 +67,8 @@
     <div class="modal-overlay active"><!--1:26:30 pt 2-->
       <div class="modal">
         <div id="form">
-          <h2>Nova transação</h2>
-          <form action="">
+          <h2>Nova transação</h2><!--Ao clicar-->
+          <form action="" onsubmit="Form.submit(event)">
             <div class="input-group">
               <label 
               for="description" class="sr-only">Descrição</label>
@@ -228,7 +83,7 @@
               <label
                for="amount" class="sr-only">
                 Valor </label>
-                <input
+                <input  
                   type="Number"
                   id="amount"
                   step="0.01"
@@ -266,4 +121,4 @@
     </script>
   </body>
 </html>
->>>>>>> ec3e2a2c6cd61bbb8d711ea3fa27ed4da19f3a51
+
