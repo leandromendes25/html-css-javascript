@@ -210,4 +210,3 @@ const App = {
 }
 //Depois de descer tudo ele vai dar um reload, do qual chama o init acima novamente
 App.init()
-
